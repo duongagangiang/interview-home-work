@@ -30,7 +30,16 @@ module.exports = merge(common, {
         historyApiFallback: true,
         contentBase: path.join(BUILD_DIR, 'server', 'public'),
         hot: true,
-        port: 3000
+        port: 3000,
+        proxy: {
+            '/v1': {
+                target: {
+                    host: 'localhost',
+                    protocol: 'http',
+                    port: 5000
+                }
+            }
+        }
     },
     devtool: 'source-map'
 })
