@@ -5,6 +5,7 @@ import 'highlight.js/styles/atom-one-light.css'
 import javascript from "highlight.js/lib/languages/javascript"
 import python from "highlight.js/lib/languages/python"
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import Badge from 'react-bootstrap/Badge'
 
 hljs.registerLanguage("javascript", javascript)
 hljs.registerLanguage("python", python)
@@ -48,12 +49,14 @@ class Details extends React.Component {
                 dt.getMinutes().toString().padStart(2, '0')}:${
                 dt.getSeconds().toString().padStart(2, '0')}`
         }
-        console.log(timeCreatedPost, post)
         return (
             <div className="post mt-3">
                 <Jumbotron>
                     <h1>{post && post.title}</h1>
                     <p style={{fontStyle: 'italic', color: '#777'}}>{timeCreatedPost}</p>
+                    <p>{post && post.tags.map(tag => (
+                        <Badge style={{marginRight: '0.5rem'}} key={tag} variant="secondary">{tag}</Badge>
+                    ))}</p>
                     <p>
                         This is a simple hero unit, a simple jumbotron-style component for calling
                         extra attention to featured content or information.
