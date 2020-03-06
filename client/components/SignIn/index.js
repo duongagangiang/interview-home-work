@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+import {connect} from 'react-redux'
+import {login} from '../../actions/user'
+
 class SignIn extends Component {
 
     state = {
@@ -13,18 +16,20 @@ class SignIn extends Component {
 
     onChange = e => this.setState({[e.target.name]: e.target.value})
 
-    login = () => {
+    login = (e, push) => {
+        e.preventDefault()
         const user = this.state
-        console.log('Login', user)
+        this.props.login(user, push)
     }
 
     render() {
+        const {push} = this.props.history
         return (
             <Row>
                 <Col xs={12} sm={12} md={{ span: 4, offset: 4 }} lg={{span: 4, offset: 4}}>
                     <h1>Sign In</h1>
                     <Form>
-                        <Form.Group controlId="formBasicEmail">
+                        <Form.Group controlId="formBasicUsername">
                             <Form.Label>Username</Form.Label>
                             <Form.Control 
                                 type="text" 
@@ -43,7 +48,7 @@ class SignIn extends Component {
                                 onChange={this.onChange}
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit" onClick={this.login}>
+                        <Button variant="primary" type="submit" onClick={(e) => this.login(e, push)}>
                             Submit
                         </Button>
                     </Form>
@@ -53,4 +58,8 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn
+const mapDispatchToProps = dispatch => ({
+    login: (user, push) => dispatch(login(user, push))
+})
+
+export default connect(null, mapDispatchToProps)(SignIn)

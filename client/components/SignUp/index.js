@@ -25,7 +25,7 @@ class SignUp extends Component {
                 <Col xs={12} sm={12} md={{ span: 4, offset: 4 }} lg={{span: 4, offset: 4}}>
                     <h1>Sign Up</h1>
                     <Form>
-                        <Form.Group controlId="formBasicEmail">
+                        <Form.Group controlId="formBasicUsername">
                             <Form.Label>Username</Form.Label>
                             <Form.Control 
                                 type="text" 

@@ -8,7 +8,6 @@ class Articles extends Component {
 
     render() {
         const { posts } = this.props
-        console.log(posts.data)
         return posts.data.length > 0 ? 
             posts.data.map(post => (
                 <Row key={post.id} style={{marginTop: '1rem'}}>

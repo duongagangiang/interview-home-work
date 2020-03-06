@@ -8,7 +8,6 @@ const UserController = {
         { username: req.body.username },
         (err, userInfo) => {
     
-          console.log(req.body)
           if (err) {
             res.status(500).json({
               message: 'Invalid username or password!!!',
@@ -21,7 +20,6 @@ const UserController = {
               .then(result => {
                 if (result) {
                   userInfo.password = '';
-                  userInfo.role = '';
                   // token expire in 7 days
                   const token = jwt.sign(
                     { userInfo },
@@ -29,9 +27,7 @@ const UserController = {
                     { expiresIn: 604800 }
                   )
                   res.status(200).json({
-                    userInformation: {
-                        username: userInfo.username
-                    },
+                    userInformation: userInfo,
                     token: token
                   })
                   return

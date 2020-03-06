@@ -1,3 +1,10 @@
 .dropdown-menu {
     left: -100% !important;
 }
+
+@media (min-width: 992px) {
+    .custom-menu-right {
+        display: flex;
+        align-items: center;
+    }
+}

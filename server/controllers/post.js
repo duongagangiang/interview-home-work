@@ -39,7 +39,6 @@ const PostController = {
     update: (req, res, next) => {
       const token = req.headers['authorization']
       const id = req.params.id
-      console.log(id)
       if (!token) {
         res.status(401).json({ message: 'No token provided' })
         return

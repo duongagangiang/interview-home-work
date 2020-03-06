@@ -2,7 +2,8 @@ import Dashboard from './components/Dashboard'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
-import Articles from "./components/Articles"
+import ArticleCreator from "./components/ArticleCreator"
+import Details from './components/Details'
 
 const routes = [
     {
@@ -24,7 +25,11 @@ const routes = [
     },
     {
         path: '/:username/posts',
-        component: Articles
+        component: ArticleCreator
+    },
+    {
+        path: '/posts/:id',
+        component: Details
     }
 ]
 

@@ -25,3 +25,21 @@ export const getPosts = () => async (dispatch) => {
         dispatch(endFetchPosts(error))
     }
 }
+
+export const createNewPost = (post, push) => async dispatch => {
+    try {
+        if ('token' in localStorage) {
+            const res = await REST_API.post(POSTS, post, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            dispatch(getPosts());
+            push('/')
+        } else {
+            push('/sign-in')
+        }    
+    } catch(e) {
+        console.log(e)
+    }
+}

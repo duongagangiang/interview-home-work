@@ -1,5 +1,5 @@
 const path = require('path')
-
+const webpack = require('webpack')
 const APP_DIR = path.join(__dirname, '../')
 const BUILD_DIR = path.join(__dirname, '../')
 
@@ -17,5 +17,10 @@ module.exports = {
                 use: 'babel-loader'
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            'window.hljs': 'highlight.js',
+        })
+    ]
 }
