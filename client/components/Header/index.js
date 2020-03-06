@@ -26,8 +26,8 @@ const Header = () => (
                         roundedCircle
                     />
                 </Nav.Link>
-                <Nav.Link as={NavLink} to="/sign-in">Sign-in</Nav.Link>
-                <Nav.Link as={NavLink} to="/sign-up">Sign-up</Nav.Link>
+                <Nav.Link as={NavLink} to="/sign-in">Sign In</Nav.Link>
+                <Nav.Link as={NavLink} to="/sign-up">Sign Up</Nav.Link>
                 <NavDropdown title="My Account" id="collasible-nav-dropdown">
                     <NavDropdown.Item as={NavLink} to="/duong/posts">New Post</NavDropdown.Item>
                     <NavDropdown.Item as={NavLink} to="/profile">Profile</NavDropdown.Item>

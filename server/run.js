@@ -5,5 +5,6 @@ require('@babel/register')({
         "@babel/preset-react"
     ]
 })
-
+require('ignore-styles')
+require('@babel/polyfill')
 require('./index.js')

@@ -4,22 +4,11 @@ import config from '../../config'
 
 const PostController = {
     getPosts: (req, res, next) => {
-        const token = req.headers['authorization'];
-        if (!token) {
-            res.status(401).json({ message: 'No token provided' });
-            return;
-        }
-        jwt.verify(token.split(' ')[1], config.secretKey, null, (err, decoded) => {
-          if (err) {
-            res.status(501).json({ message: 'Failed to authenticate token.' });
-            return;
-          }
-            ModelPost.find().sort({createdAt: -1}).exec((error, data) => {
-                if (error) next(error);
-                res.status(200).json(data);
-                return;
-            });
-        });
+      ModelPost.find().sort({createdAt: -1}).exec((error, data) => {
+          if (error) next(error);
+          res.status(200).json(data);
+          return;
+      });
     },
     create: (req, res, next) => {
         const token = req.headers['authorization'];

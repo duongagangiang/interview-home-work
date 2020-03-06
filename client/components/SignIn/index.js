@@ -1,7 +1,56 @@
-import React from 'react'
+import React, {Component} from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
-const SignIn = () => (
-    <h1>SignIn working</h1>
-)
+class SignIn extends Component {
+
+    state = {
+        username: "",
+        password: ""
+    }
+
+    onChange = e => this.setState({[e.target.name]: e.target.value})
+
+    login = () => {
+        const user = this.state
+        console.log('Login', user)
+    }
+
+    render() {
+        return (
+            <Row>
+                <Col xs={12} sm={12} md={{ span: 4, offset: 4 }} lg={{span: 4, offset: 4}}>
+                    <h1>Sign In</h1>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control 
+                                type="text" 
+                                name="username" 
+                                placeholder="Username"
+                                onChange={this.onChange}
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control 
+                                type="password" 
+                                name="password" 
+                                placeholder="Password" 
+                                onChange={this.onChange}
+                            />
+                        </Form.Group>
+                        <Button variant="primary" type="submit" onClick={this.login}>
+                            Submit
+                        </Button>
+                    </Form>
+                </Col>
+            </Row>
+        )
+    }
+}
 
 export default SignIn
